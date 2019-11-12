@@ -100,7 +100,7 @@ public class GetHttpContent {
             if(connection_http!=null)
                 connection_http.disconnect();
             //返回获取到的网页内容
-            return buffer.toString().replace("\r","").replace("\n","");
+            return buffer.toString();
         }
     }
 }
