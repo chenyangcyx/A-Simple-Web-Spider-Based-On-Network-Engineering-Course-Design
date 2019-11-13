@@ -45,4 +45,20 @@ public class OverAllData {
     public String FILMLIST_DETAILPAGEURL_START="<a href=\"";
     public String FILMLIST_DETAILPAGEURL_END="\">";
     /*----------电影列表的处理-获取字符串的匹配项所需要的特征码----------*/
+
+    /*----------电影详细页面的处理-获取网页中每个信息所需要的特征码----------*/
+    //JSON数据
+    public String FILMDETAIL_JSON_START="<script type=\"application/ld+json\">";
+    public String FILMDETAIL_JSON_END="</script>";
+    //电影标题
+    public String FILMDETAIL_TITLE_START="\"name\": ";
+    public String FILMDETAIL_TITLE_END=",";
+    //电影发行日期
+    public String FILMDETAIL_PUBLISH_DATE_START="\"datePublished\": ";
+    public String FILMDETAIL_PUBLISH_DATE_END=",";
+    //电影导演
+    public String FILMDETAIL_DIRECTOR_START1="\"director\":";
+    public String FILMDETAIL_DIRECTOR_START2="\"name\": ";
+    public String FILMDETAIL_DIRECTOR_END="\"";
+    /*----------电影详细页面的处理-获取网页中每个信息所需要的特征码----------*/
 }

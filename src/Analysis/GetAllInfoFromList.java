@@ -47,19 +47,6 @@ public class GetAllInfoFromList {
             lfd.setDetail_page_url(Get_detail_page_url(all_match.get(i)));
 
             all_lfd.add(lfd);
-            System.out.println(lfd.getRank_num());
-            System.out.println(lfd.getCh_name());
-            System.out.println(lfd.getEng_name());
-            System.out.println(lfd.getOther_name());
-            System.out.println(lfd.getTitle());
-            System.out.println(lfd.getPlayable());
-            System.out.println(lfd.getBase_info());
-            System.out.println(lfd.getType());
-            System.out.println(lfd.getScore());
-            System.out.println(lfd.getComment_num());
-            System.out.println(lfd.getShort_comment());
-            System.out.println(lfd.getImg_url());
-            System.out.println(lfd.getDetail_page_url());
         }
         return all_lfd;
     }
