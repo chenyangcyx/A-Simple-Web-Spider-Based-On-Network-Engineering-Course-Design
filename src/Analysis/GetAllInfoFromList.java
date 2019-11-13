@@ -1,6 +1,6 @@
 package Analysis;
-import DataProcess.ListFilmData;
-import DataProcess.OverAllData;
+import DataDefinition.FilmListData;
+import DataDefinition.OverAllData;
 import java.util.LinkedList;
 
 //获取排行榜列表的所有信息
@@ -13,12 +13,12 @@ public class GetAllInfoFromList {
         this.url_content=content;
     }
 
-    public LinkedList<ListFilmData> GetInfo(){
+    public LinkedList<FilmListData> GetInfo(){
         LinkedList<String> all_match=GetAllMatchString(url_content, all.FILMLIST_GETINFO_START,all.FILMLIST_GETINFO_END);
-        LinkedList<ListFilmData> all_lfd=new LinkedList<ListFilmData>();
+        LinkedList<FilmListData> all_lfd= new LinkedList<>();
         //遍历所有获得的电影信息
         for(int i=0;i<all_match.size();i++){
-            ListFilmData lfd=new ListFilmData();
+            FilmListData lfd=new FilmListData();
             //获取排名
             lfd.setRank_num(Get_rank_num(all_match.get(i)));
             //获取中文名
@@ -45,6 +45,9 @@ public class GetAllInfoFromList {
             lfd.setImg_url(Get_img_url(all_match.get(i)));
             //获取详细页面链接
             lfd.setDetail_page_url(Get_detail_page_url(all_match.get(i)));
+
+            //控制台输出
+            System.out.println("获取到列表项目："+lfd.getTitle()+System.getProperty("line.separator"));
 
             all_lfd.add(lfd);
         }
