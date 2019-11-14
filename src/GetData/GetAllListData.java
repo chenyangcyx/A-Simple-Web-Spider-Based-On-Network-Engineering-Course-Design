@@ -1,5 +1,4 @@
 package GetData;
-
 import Analysis.GetAllInfoFromList;
 import Connection.GetHttpContent;
 import DataDefinition.FilmListData;
@@ -7,7 +6,7 @@ import DataDefinition.OverAllData;
 import java.util.LinkedList;
 
 public class GetAllListData {
-    OverAllData all=OverAllData.overall;
+    private OverAllData all=OverAllData.overall;
 
     public LinkedList<FilmListData> GetData(){
         LinkedList<FilmListData> fld=new LinkedList<>();
@@ -21,8 +20,7 @@ public class GetAllListData {
             //获取网页内容
             String content=new GetHttpContent(all.FILMLIST_URL+i).GetContent();
             LinkedList<FilmListData> temp=new GetAllInfoFromList(content).GetInfo();
-            for(int j=0;j<temp.size();j++)
-                fld.add(temp.get(j));
+            for (FilmListData filmListData : temp) fld.add(filmListData);
         }
         return fld;
     }

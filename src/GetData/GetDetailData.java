@@ -1,11 +1,10 @@
 package GetData;
-
 import Analysis.GetAllInfoFromDetailPage;
 import Connection.GetHttpContent;
 import DataDefinition.FilmDetailData;
 
 public class GetDetailData {
-    String url;
+    private String url;
 
     public GetDetailData(String url){
         this.url =url;

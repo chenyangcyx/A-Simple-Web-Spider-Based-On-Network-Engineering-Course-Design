@@ -1,8 +1,8 @@
 package Analysis;
 
-public class UnicodeDecode {
+class UnicodeDecode {
     //Unicode编码转String字符串
-    public String unicodeToString(String unicode) {
+    String unicodeToString(String unicode) {
         StringBuffer sb = new StringBuffer();
         String[] hex = unicode.split("\\\\u");
         for (int i = 1; i < hex.length; i++) {

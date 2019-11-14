@@ -3,23 +3,20 @@ import Connection.HttpsCertificate;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DownloadFile {
-    public void downloadFile(String fileUrl, String fileLocal) throws Exception {
+class DownloadFile {
+    void downloadFile(String fileUrl, String fileLocal) throws Exception {
         SSLContext sslcontext = SSLContext.getInstance("SSL", "SunJSSE");
         sslcontext.init(null, new HttpsCertificate[] { new HttpsCertificate() }, new java.security.SecureRandom());
         URL url = new URL(fileUrl);
-        HostnameVerifier ignoreHostnameVerifier = new HostnameVerifier() {
-            public boolean verify(String s, SSLSession sslsession) {
-                System.out.println("WARNING: Hostname is not matched for cert.");
-                return true;
-            }
+        HostnameVerifier ignoreHostnameVerifier = (s, sslsession) -> {
+            System.out.println("WARNING: Hostname is not matched for cert.");
+            return true;
         };
         HttpsURLConnection.setDefaultHostnameVerifier(ignoreHostnameVerifier);
         HttpsURLConnection.setDefaultSSLSocketFactory(sslcontext.getSocketFactory());

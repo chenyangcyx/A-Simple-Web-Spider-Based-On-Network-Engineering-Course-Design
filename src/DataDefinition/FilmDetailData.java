@@ -1,28 +1,28 @@
 package DataDefinition;
 
 public class FilmDetailData {
-    String title="";
-    String publish_date="";
-    String director="";
-    String author="";
-    String actor="";
-    String type="";
-    String make_location="";
-    String language="";
-    String show_date="";
-    String length="";
-    String other_name="";
-    String IMDb_link="";
-    String ratingValue="";
-    String comment_num="";
-    String star5_rating_per="";
-    String star4_rating_per="";
-    String star3_rating_per="";
-    String star2_rating_per="";
-    String star1_rating_per="";
-    String description="";
-    String img_url="";
-    String detail_link="";
+    private String title="";
+    private String publish_date="";
+    private String director="";
+    private String author="";
+    private String actor="";
+    private String type="";
+    private String make_location="";
+    private String language="";
+    private String show_date="";
+    private String length="";
+    private String other_name="";
+    private String IMDb_link="";
+    private String ratingValue="";
+    private String comment_num="";
+    private String star5_rating_per="";
+    private String star4_rating_per="";
+    private String star3_rating_per="";
+    private String star2_rating_per="";
+    private String star1_rating_per="";
+    private String description="";
+    private String img_url="";
+    private String detail_link="";
 
     public String getTitle() {
         return title;

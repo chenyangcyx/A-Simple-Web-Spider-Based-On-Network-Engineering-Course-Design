@@ -8,9 +8,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class GetHttpContent {
-    String url_address;
+    private String url_address;
 
     //初始化函数
     public GetHttpContent(String request_url){
@@ -62,7 +63,7 @@ public class GetHttpContent {
                 //获取输入流
                 input_stream=connection_http.getInputStream();
             }
-            input_stream_reader=new InputStreamReader(input_stream,"utf-8");
+            input_stream_reader=new InputStreamReader(input_stream, StandardCharsets.UTF_8);
             buffer_reader=new BufferedReader(input_stream_reader);
             //从输入流读取结果
             buffer=new StringBuffer();

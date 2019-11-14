@@ -1,14 +1,13 @@
 package Analysis;
 import DataDefinition.FilmDetailData;
 import DataDefinition.OverAllData;
-
 import java.util.LinkedList;
 
 public class GetAllInfoFromDetailPage {
-    OverAllData all=OverAllData.overall;
-    UnicodeDecode ud=new UnicodeDecode();
+    private OverAllData all=OverAllData.overall;
+    private UnicodeDecode ud=new UnicodeDecode();
 
-    String url_content;
+    private String url_content;
 
     public GetAllInfoFromDetailPage(String content){
         this.url_content=content;
@@ -47,13 +46,13 @@ public class GetAllInfoFromDetailPage {
     }
 
     //获取网页内容的json数据
-    public String GetJsonContent(String content){
+    private String GetJsonContent(String content){
         return content.substring(content.indexOf(all.FILMDETAIL_JSON_START)+all.FILMDETAIL_JSON_START.length(),
                 content.indexOf(all.FILMDETAIL_JSON_END,content.indexOf(all.FILMDETAIL_JSON_START)));
     }
 
     //从获取的json数据中获取指定字段的值
-    public String GetJsonSomeContent(String json,String name,String start_str){
+    private String GetJsonSomeContent(String json, String name, String start_str){
         if(start_str.equals("["))
             return json.substring(json.indexOf(name)+name.length(),json.indexOf("]",json.indexOf(name)));
         else
@@ -61,113 +60,112 @@ public class GetAllInfoFromDetailPage {
     }
 
     //从json某一字段的所有内容中抽取出符合特定字段的所有值
-    public String GetAllNamesFromJsonContent(String content,String name){
+    private String GetAllNamesFromJsonContent(String content, String name){
         int count=1;
         int last_start=0;
-        String all_content="";
+        StringBuilder all_content= new StringBuilder();
         while(content.indexOf(name,last_start)!=-1){
             last_start=content.indexOf(name,last_start);
             if(count!=1)
-                all_content+=" / ";
-            all_content+=content.substring(content.indexOf(name,last_start)+(name+": \"").length(),
-                    content.indexOf("\"",content.indexOf(name,last_start)+(name+": \"").length()));
+                all_content.append(" / ");
+            all_content.append(content.substring(content.indexOf(name, last_start) + (name + ": \"").length(),
+                    content.indexOf("\"", content.indexOf(name, last_start) + (name + ": \"").length())));
             last_start=content.indexOf("\"",content.indexOf(name,last_start)+(name+": \"").length());
             ++count;
         }
-        return all_content;
+        return all_content.toString();
     }
 
     //获取电影标题
-    public String Get_title(String json){
+    private String Get_title(String json){
         return GetJsonSomeContent(json,all.FILMDETAIL_TITLE_NAME,all.FILMDETAIL_TITLE_START)
                 .replace("&#39;","'")
                 .replace("&amp;","&");
     }
 
     //获取电影发行日期
-    public String Get_publish_date(String json){
+    private String Get_publish_date(String json){
         return GetJsonSomeContent(json,all.FILMDETAIL_PUBLISH_DATE_NAME,all.FILMDETAIL_PUBLISH_DATE_START);
     }
 
     //获取电影的导演信息
-    public String Get_director(String json){
+    private String Get_director(String json){
         return GetAllNamesFromJsonContent(GetJsonSomeContent(json,all.FILMDETAIL_DIRECTOR_NAME,"["),all.FILMDETAIL_DIRECTOR_ALLNAMES);
     }
 
     //获取电影的编剧信息
-    public String Get_author(String json){
+    private String Get_author(String json){
         return GetAllNamesFromJsonContent(GetJsonSomeContent(json,all.FILMDETAIL_AUTHOR_NAME,"["),all.FILMDETAIL_AUTHOR_ALLNAMES);
     }
 
     //获取电影的主演信息
-    public String Get_actor(String json){
+    private String Get_actor(String json){
         return GetAllNamesFromJsonContent(GetJsonSomeContent(json,all.FILMDETAIL_ACTOR_NAME,"["),all.FILMDETAIL_ACTOR_ALLNAMES);
     }
 
     //获取电影的类型
-    public String Get_type(String json){
+    private String Get_type(String json){
         String all_content=GetJsonSomeContent(json,all.FILMDETAIL_TYPE_NAME,"[");
         LinkedList<String> all_type_encode=new LinkedList<>();
         if(all_content.contains(", ")){
             String[] all_type_encode_string=all_content.split(", ");
-            for(int i=0;i<all_type_encode_string.length;i++)
-                all_type_encode.add(ud.unicodeToString(all_type_encode_string[i].replace("\"","")));
-            String result="";
+            for (String s : all_type_encode_string) all_type_encode.add(ud.unicodeToString(s.replace("\"", "")));
+            StringBuilder result= new StringBuilder();
             for(int i=0;i<all_type_encode.size();i++){
                 if(i==0)
-                    result+=all_type_encode.get(i);
+                    result.append(all_type_encode.get(i));
                 else
-                    result+=" / "+all_type_encode.get(i);
+                    result.append(" / ").append(all_type_encode.get(i));
             }
-            return result;
+            return result.toString();
         }
         else
             return ud.unicodeToString(all_content.replace("\"",""));
     }
 
     //获取电影的制片国家/地区
-    public String Get_makelocation(String content){
+    private String Get_makelocation(String content){
         return content.substring(content.indexOf(all.FILEDETAIL_MAKELOCATION_START)+all.FILEDETAIL_MAKELOCATION_START.length(),
                 content.indexOf(all.FILMDETAIL_MAKELOCATION_END,content.indexOf(all.FILEDETAIL_MAKELOCATION_START)));
     }
 
     //获取电影的语言
-    public String Get_language(String content){
+    private String Get_language(String content){
         return content.substring(content.indexOf(all.FILMDETAIL_LANGUAGE_START)+all.FILMDETAIL_LANGUAGE_START.length(),
                 content.indexOf(all.FILMDETAIL_LANGUAGE_END,content.indexOf(all.FILMDETAIL_LANGUAGE_START)));
     }
 
     //获取电影的上映日期
-    public String Get_showdate(String content){
+    private String Get_showdate(String content){
         String con=content.substring(content.indexOf(all.FILMDETAIL_SHOWDATE_START)+all.FILMDETAIL_SHOWDATE_START.length(),
                 content.indexOf(all.FILMDETAIL_SHOWDATE_END,content.indexOf(all.FILMDETAIL_SHOWDATE_START)));
         String info=con.replace("<span property=\"v:initialReleaseDate\" content=\"","")
                 .replace("</span>","");
-        String result="";
+        StringBuilder result= new StringBuilder();
         if(info.contains(" / ")){
             String[] info2=info.split(" / ");
             for(int i=0;i<info2.length;i++)
                 info2[i]=info2[i].substring(0,info2[i].indexOf("\">"));
             for(int i=0;i<info2.length;i++)
                 if(i==0)
-                    result+=info2[i];
+                    result.append(info2[i]);
                 else
-                    result+=" / "+info2[i];
+                    result.append(" / ").append(info2[i]);
         }
         else
-            result=info.substring(info.indexOf("\">")+("\">").length());
-        return result;
+            result = new StringBuilder(info.substring(info.indexOf("\">") + ("\">").length()));
+        return result.toString();
     }
 
     //获取电影的片长
-    public String Get_length(String content){
+    private String Get_length(String content){
         String info=content.substring(content.indexOf(all.FILMDETAIL_LENGTH_START)+all.FILMDETAIL_LENGTH_START.length(),
                 content.indexOf(all.FILMDETAIL_LENGTH_END,content.indexOf(all.FILMDETAIL_LENGTH_START)));
         return info.substring(info.indexOf("\">")+("\">").length()).replace("</span>","");
     }
 
     //获取电影的其他名称
-    public String Get_othername(String content){
+    private String Get_othername(String content){
         if(content.contains(all.FILMDETAIL_OTHERNAME_START))
             return content.substring(content.indexOf(all.FILMDETAIL_OTHERNAME_START)+all.FILMDETAIL_OTHERNAME_START.length(),
                 content.indexOf(all.FILMDETAIL_OTHERNAME_END,content.indexOf(all.FILMDETAIL_OTHERNAME_START)));
@@ -176,23 +174,23 @@ public class GetAllInfoFromDetailPage {
     }
 
     //获取电影的IMDb链接
-    public String Get_IMDbLink(String content){
+    private String Get_IMDbLink(String content){
         return content.substring(content.indexOf(all.FILMDETAIL_IMDBLINK_START)+all.FILMDETAIL_IMDBLINK_START.length(),
                 content.indexOf(all.FILMDETAIL_IMDBLINK_END,content.indexOf(all.FILMDETAIL_IMDBLINK_START)));
     }
 
     //获取电影的评分
-    public String Get_ratingValue(String json){
+    private String Get_ratingValue(String json){
         return GetJsonSomeContent(json,all.FILMDETAIL_RATINGVALUE_NAME,"\"");
     }
 
     //获取电影的评分人数
-    public String Get_comment_num(String json){
+    private String Get_comment_num(String json){
         return GetJsonSomeContent(json,all.FILMDETAIL_COMMENTNUM_NAME,"\"");
     }
 
     //获取电影的1-5星的所占百分比
-    public String[] Get_star_rating_per(String content){
+    private String[] Get_star_rating_per(String content){
         String[] per=new String[5];
         String con0=content.substring(content.indexOf(all.FILMDETAIL_STAR1_RATING_PER));
         per[0]=con0.substring(con0.indexOf(all.FILMDETAIL_STAR_RATING_PER_START)+all.FILMDETAIL_STAR_RATING_PER_START.length(),
@@ -213,8 +211,8 @@ public class GetAllInfoFromDetailPage {
     }
 
     //获取电影的介绍
-    public String Get_description(String content){
-        String con="";
+    private String Get_description(String content){
+        String con;
         if(content.contains(all.FILMDETAIL_DESCRIPTION_START2))
             con=content.substring(content.indexOf(all.FILMDETAIL_DESCRIPTION_START2)+all.FILMDETAIL_DESCRIPTION_START2.length(),
                     content.indexOf(all.FILMDETAIL_DESCRIPTION_END,content.indexOf(all.FILMDETAIL_DESCRIPTION_START2)));
@@ -222,24 +220,24 @@ public class GetAllInfoFromDetailPage {
             con=content.substring(content.indexOf(all.FILMDETAIL_DESCRIPTION_START1)+all.FILMDETAIL_DESCRIPTION_START1.length(),
                     content.indexOf(all.FILMDETAIL_DESCRIPTION_END,content.indexOf(all.FILMDETAIL_DESCRIPTION_START1)));
         String[] all_line=con.split("<br />");
-        String result="";
+        StringBuilder result= new StringBuilder();
         for(int i=0;i<all_line.length;i++){
             all_line[i]=all_line[i].trim().replace("　","");
             if(i==0)
-                result+=all_line[i];
+                result.append(all_line[i]);
             else
-                result+=System.getProperty("line.separator")+all_line[i];
+                result.append(System.getProperty("line.separator")).append(all_line[i]);
         }
-        return result;
+        return result.toString();
     }
 
     //获取电影的图片链接
-    public String Get_img_url(String json){
+    private String Get_img_url(String json){
         return GetJsonSomeContent(json,all.FILMDETAIL_IMGURL_NAME,"\"");
     }
 
     //获取电影的详情页链接
-    public String Get_detail_link(String json){
+    private String Get_detail_link(String json){
         return all.FILMDETAIL_LINK_HEAD+GetJsonSomeContent(json,all.FILMDETAIL_LINK_NAME,"\"");
     }
 }
