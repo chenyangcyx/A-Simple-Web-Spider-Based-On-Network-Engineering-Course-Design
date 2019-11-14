@@ -4,11 +4,14 @@ import FileOperation.WriteDetailInfoToFile;
 import FileOperation.WriteListInfoToFile;
 import GetData.GetAllListData;
 import GetData.GetDetailData;
+import WriteDatabase.WriteToDatabase;
 
 import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
+        //准备数据库
+        WriteToDatabase wtb=new WriteToDatabase();
         /*列表相关*/
         //获取排行榜上所有的电影信息
         LinkedList<FilmListData> fld=new GetAllListData().GetData();
@@ -17,6 +20,9 @@ public class Main {
         String list_path=wlitf.MakeFolder(wlitf.GetCurrentPath(),"list");
         //写入基本信息
         wlitf.WriteListContent(list_path);
+        //写入数据库
+        for(int i=0;i<fld.size();i++)
+            wtb.WriteListData(fld.get(i));
         /*列表相关*/
 
         /*详情页面相关*/
@@ -30,6 +36,8 @@ public class Main {
             //将详情信息写入文件
             wditf.WriteDetailContent(fdd,detail_path,
                     fld.get(i).getRank_num()+" - "+fld.get(i).getCh_name());
+            //写入数据库
+            wtb.WriteDetailData(fdd);
         }
         /*详情页面相关*/
     }

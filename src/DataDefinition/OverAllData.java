@@ -110,4 +110,11 @@ public class OverAllData {
     public String FILMDETAIL_LINK_HEAD="https://movie.douban.com";
     public String FILMDETAIL_LINK_NAME="\"url\"";
     /*----------电影详细页面的处理-获取网页中每个信息所需要的特征码----------*/
+
+    /*----------数据库处理----------*/
+    public String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    public String SQLAddress="jdbc:mysql://47.100.206.8:3306/filmdata?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC";
+    public String SQL_ACCOUNT="filmdata";
+    public String SQL_PASSWORD="filmdatafilmdatafilmdatafilmdata";
+    /*----------数据库处理----------*/
 }

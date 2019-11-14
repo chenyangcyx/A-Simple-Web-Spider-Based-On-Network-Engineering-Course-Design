@@ -64,12 +64,11 @@ public class WriteDetailInfoToFile {
             //下载海报图片
             if(!fdd.getImg_url().equals("")){
                 System.out.println("下载海报图片 : "+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
-                        +" 到 "+path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
-                        +System.getProperty("line.separator"));
+                        +" 到 "+path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf(".")));
                 df.downloadFile(fdd.getImg_url(),path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf(".")));
             }
             else
-                System.out.println("该电影的海报图片不可下载！"+System.getProperty("line.separator"));
+                System.out.println("该电影的海报图片不可下载！");
 
             bw.close();
         } catch (Exception e) {
