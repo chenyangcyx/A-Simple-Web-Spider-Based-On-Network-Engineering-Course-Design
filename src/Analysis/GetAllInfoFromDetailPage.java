@@ -17,6 +17,9 @@ public class GetAllInfoFromDetailPage {
     public FilmDetailData GetInfo(){
         String json=GetJsonContent(url_content);
         FilmDetailData fdd=new FilmDetailData();
+        //检查特定的内容
+        if(url_content.contains("发条橙")||url_content.contains("国王的演讲"))
+            return fdd;
         String[] per=Get_star_rating_per(url_content);
         fdd.setTitle(Get_title(json));
         fdd.setPublish_date(Get_publish_date(json));
@@ -165,8 +168,11 @@ public class GetAllInfoFromDetailPage {
 
     //获取电影的其他名称
     public String Get_othername(String content){
-        return content.substring(content.indexOf(all.FILMDETAIL_OTHERNAME_START)+all.FILMDETAIL_OTHERNAME_START.length(),
+        if(content.contains(all.FILMDETAIL_OTHERNAME_START))
+            return content.substring(content.indexOf(all.FILMDETAIL_OTHERNAME_START)+all.FILMDETAIL_OTHERNAME_START.length(),
                 content.indexOf(all.FILMDETAIL_OTHERNAME_END,content.indexOf(all.FILMDETAIL_OTHERNAME_START)));
+        else
+            return "";
     }
 
     //获取电影的IMDb链接
@@ -208,8 +214,13 @@ public class GetAllInfoFromDetailPage {
 
     //获取电影的介绍
     public String Get_description(String content){
-        String con=content.substring(content.indexOf(all.FILMDETAIL_DESCRIPTION_START)+all.FILMDETAIL_DESCRIPTION_START.length(),
-                content.indexOf(all.FILMDETAIL_DESCRIPTION_END,content.indexOf(all.FILMDETAIL_DESCRIPTION_START)));
+        String con="";
+        if(content.contains(all.FILMDETAIL_DESCRIPTION_START2))
+            con=content.substring(content.indexOf(all.FILMDETAIL_DESCRIPTION_START2)+all.FILMDETAIL_DESCRIPTION_START2.length(),
+                    content.indexOf(all.FILMDETAIL_DESCRIPTION_END,content.indexOf(all.FILMDETAIL_DESCRIPTION_START2)));
+        else
+            con=content.substring(content.indexOf(all.FILMDETAIL_DESCRIPTION_START1)+all.FILMDETAIL_DESCRIPTION_START1.length(),
+                    content.indexOf(all.FILMDETAIL_DESCRIPTION_END,content.indexOf(all.FILMDETAIL_DESCRIPTION_START1)));
         String[] all_line=con.split("<br />");
         String result="";
         for(int i=0;i<all_line.length;i++){

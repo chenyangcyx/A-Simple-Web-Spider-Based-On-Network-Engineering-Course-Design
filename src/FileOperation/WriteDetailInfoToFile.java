@@ -31,6 +31,8 @@ public class WriteDetailInfoToFile {
 
     //写入信息
     public void WriteDetailContent(FilmDetailData fdd, String path,String file_name) {
+        //控制台输出
+        System.out.println("获取到详情页信息："+fdd.getTitle());
         try {
             BufferedWriter bw=new BufferedWriter(new FileWriter(path+"/"+file_name+".txt"));
             DownloadFile df=new DownloadFile();
@@ -60,10 +62,14 @@ public class WriteDetailInfoToFile {
             bw.write("网址 : "+fdd.getDetail_link()+System.getProperty("line.separator"));
 
             //下载海报图片
-            System.out.println("下载海报图片 : "+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
-            +" 到 "+path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
-                    +System.getProperty("line.separator"));
-            df.downloadFile(fdd.getImg_url(),path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf(".")));
+            if(!fdd.getImg_url().equals("")){
+                System.out.println("下载海报图片 : "+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
+                        +" 到 "+path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
+                        +System.getProperty("line.separator"));
+                df.downloadFile(fdd.getImg_url(),path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf(".")));
+            }
+            else
+                System.out.println("该电影的海报图片不可下载！"+System.getProperty("line.separator"));
 
             bw.close();
         } catch (Exception e) {

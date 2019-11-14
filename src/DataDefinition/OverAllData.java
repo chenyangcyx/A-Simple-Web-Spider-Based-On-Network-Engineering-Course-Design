@@ -100,8 +100,9 @@ public class OverAllData {
     public String FILMDETAIL_STAR1_RATING_PER="<span class=\"stars1 starstop\"";
     public String FILMDETAIL_STAR_RATING_PER_START="<span class=\"rating_per\">";
     public String FILMDETAIL_STAR_RATING_PER_END="</span>";
-    //电影的介绍
-    public String FILMDETAIL_DESCRIPTION_START="<span class=\"all hidden\">";
+    //电影的剧情简介
+    public String FILMDETAIL_DESCRIPTION_START1="<span property=\"v:summary\" class=\"\">";
+    public String FILMDETAIL_DESCRIPTION_START2="<span class=\"all hidden\">";
     public String FILMDETAIL_DESCRIPTION_END="</span>";
     //电影的图片链接
     public String FILMDETAIL_IMGURL_NAME="\"image\"";
