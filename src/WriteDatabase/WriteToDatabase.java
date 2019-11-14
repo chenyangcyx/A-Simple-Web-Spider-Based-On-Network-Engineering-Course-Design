@@ -51,7 +51,7 @@ public class WriteToDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("将"+fld.getCh_name()+"的信息写入数据库！"+System.getProperty("line.separator"));
+        System.out.println("将"+fld.getCh_name()+"的信息写入数据库！");
     }
 
     //写入detaildata

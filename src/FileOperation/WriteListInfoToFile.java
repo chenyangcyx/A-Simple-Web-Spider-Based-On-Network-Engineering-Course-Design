@@ -59,7 +59,8 @@ public class WriteListInfoToFile {
                 //下载海报图片
                 System.out.println("下载海报图片 : "+all_list.get(i).getRank_num()
                         +all_list.get(i).getImg_url().substring(all_list.get(i).getImg_url().lastIndexOf('.'))
-                        +" 到 "+path+"/"+all_list.get(i).getRank_num()+all_list.get(i).getImg_url().substring(all_list.get(i).getImg_url().lastIndexOf('.')));
+                        +" 到 "+path+"/"+all_list.get(i).getRank_num()+all_list.get(i).getImg_url().substring(all_list.get(i).getImg_url().lastIndexOf('.'))
+                        +System.getProperty("line.separator"));
                 df.downloadFile(all_list.get(i).getImg_url(),path+"/"+all_list.get(i).getRank_num()+all_list.get(i).getImg_url().substring(all_list.get(i).getImg_url().lastIndexOf('.')));
                 bw.write(System.getProperty("line.separator")+System.getProperty("line.separator")+System.getProperty("line.separator")+System.getProperty("line.separator"));
             }

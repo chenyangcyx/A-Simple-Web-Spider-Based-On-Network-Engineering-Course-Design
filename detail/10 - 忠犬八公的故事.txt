@@ -11,7 +11,7 @@
 又名 : 忠犬小八(台) / 秋田犬八千(港) / 忠犬传奇
 IMDb链接 : https://www.imdb.com/title/tt1028532
 豆瓣评分 : 9.3
-评价次数 : 860257
+评价次数 : 860278
 5星评价所占比例 : 72.2%
 4星评价所占比例 : 23.0%
 3星评价所占比例 : 4.4%
@@ -21,4 +21,3 @@ IMDb链接 : https://www.imdb.com/title/tt1028532
 本片根据上个世纪30年代发生在日本的真实故事改编，1987年在日本拍成电影后创造了40亿日元的票房。
 图片链接 : https://img9.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg
 网址 : https://movie.douban.com/subject/3011091/
-下载海报图片 : 10 - 忠犬八公的故事.jpg 到 D:\Code\Java\A-Simple-Web-Spider-Based-On-Network-Engineering-Course-Design/detail/10 - 忠犬八公的故事.jpg

@@ -11,9 +11,9 @@
 又名 : 雄才伟略 / 情妇
 IMDb链接 : https://www.imdb.com/title/tt0051201
 豆瓣评分 : 9.6
-评价次数 : 221467
+评价次数 : 221480
 5星评价所占比例 : 81.5%
-4星评价所占比例 : 16.7%
+4星评价所占比例 : 16.8%
 3星评价所占比例 : 1.6%
 2星评价所占比例 : 0.1%
 1星评价所占比例 : 0.1%
@@ -21,4 +21,3 @@ IMDb链接 : https://www.imdb.com/title/tt0051201
 本片改编自阿加莎•克里斯蒂同名小说。
 图片链接 : https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1505392928.jpg
 网址 : https://movie.douban.com/subject/1296141/
-下载海报图片 : 28 - 控方证人.jpg 到 D:\Code\Java\A-Simple-Web-Spider-Based-On-Network-Engineering-Course-Design/detail/28 - 控方证人.jpg

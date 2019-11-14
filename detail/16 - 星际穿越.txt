@@ -11,7 +11,7 @@
 又名 : 星际启示录(港) / 星际效应(台) / 星际空间 / 星际之间 / 星际远航 / 星际 / Flora's Letter
 IMDb链接 : https://www.imdb.com/title/tt0816692
 豆瓣评分 : 9.3
-评价次数 : 921838
+评价次数 : 921862
 5星评价所占比例 : 70.2%
 4星评价所占比例 : 24.1%
 3星评价所占比例 : 4.8%
@@ -21,4 +21,3 @@ IMDb链接 : https://www.imdb.com/title/tt0816692
 他们穿越遥远的星系银河，感受了一小时七年光阴的沧海桑田，窥见了未知星球和黑洞的壮伟与神秘。在浩瀚宇宙的绝望而孤独角落，总有一份超越了时空的笃定情怀将他们紧紧相连……
 图片链接 : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2206088801.jpg
 网址 : https://movie.douban.com/subject/1889243/
-下载海报图片 : 16 - 星际穿越.jpg 到 D:\Code\Java\A-Simple-Web-Spider-Based-On-Network-Engineering-Course-Design/detail/16 - 星际穿越.jpg

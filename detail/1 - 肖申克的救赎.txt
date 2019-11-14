@@ -11,7 +11,7 @@
 又名 : 月黑高飞(港) / 刺激1995(台) / 地狱诺言 / 铁窗岁月 / 消香克的救赎
 IMDb链接 : https://www.imdb.com/title/tt0111161
 豆瓣评分 : 9.7
-评价次数 : 1681701
+评价次数 : 1681766
 5星评价所占比例 : 84.7%
 4星评价所占比例 : 13.7%
 3星评价所占比例 : 1.4%
@@ -21,4 +21,3 @@ IMDb链接 : https://www.imdb.com/title/tt0111161
 本片根据著名作家斯蒂芬·金（Stephen Edwin King）的原著改编。
 图片链接 : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg
 网址 : https://movie.douban.com/subject/1292052/
-下载海报图片 : 1 - 肖申克的救赎.jpg 到 D:\Code\Java\A-Simple-Web-Spider-Based-On-Network-Engineering-Course-Design/detail/1 - 肖申克的救赎.jpg

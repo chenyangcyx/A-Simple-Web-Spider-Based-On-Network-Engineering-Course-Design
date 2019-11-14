@@ -11,7 +11,7 @@
 又名 : 冲天救兵(港) / 天外奇迹(台) / 飞屋历险记
 IMDb链接 : https://www.imdb.com/title/tt1049413
 豆瓣评分 : 9.0
-评价次数 : 825966
+评价次数 : 826003
 5星评价所占比例 : 57.4%
 4星评价所占比例 : 34.8%
 3星评价所占比例 : 7.3%
@@ -23,4 +23,3 @@ IMDb链接 : https://www.imdb.com/title/tt1049413
 本片荣获第82届奥斯卡最佳动画长片、最佳配乐2项大奖。
 图片链接 : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p485887754.jpg
 网址 : https://movie.douban.com/subject/2129039/
-下载海报图片 : 33 - 飞屋环游记.jpg 到 D:\Code\Java\A-Simple-Web-Spider-Based-On-Network-Engineering-Course-Design/detail/33 - 飞屋环游记.jpg
