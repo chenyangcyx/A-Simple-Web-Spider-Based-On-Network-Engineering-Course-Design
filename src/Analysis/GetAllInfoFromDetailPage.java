@@ -26,7 +26,7 @@ public class GetAllInfoFromDetailPage {
         fdd.setType(Get_type(json));
         fdd.setMake_location(Get_makelocation(url_content));
         fdd.setLanguage(Get_language(url_content));
-        fdd.setShow_data(Get_showdate(url_content));
+        fdd.setShow_date(Get_showdate(url_content));
         fdd.setLength(Get_length(url_content));
         fdd.setOther_name(Get_othername(url_content));
         fdd.setIMDb_link(Get_IMDbLink(url_content));
@@ -158,7 +158,6 @@ public class GetAllInfoFromDetailPage {
 
     //获取电影的片长
     public String Get_length(String content){
-        System.out.println(Get_title(content));
         String info=content.substring(content.indexOf(all.FILMDETAIL_LENGTH_START)+all.FILMDETAIL_LENGTH_START.length(),
                 content.indexOf(all.FILMDETAIL_LENGTH_END,content.indexOf(all.FILMDETAIL_LENGTH_START)));
         return info.substring(info.indexOf("\">")+("\">").length()).replace("</span>","");

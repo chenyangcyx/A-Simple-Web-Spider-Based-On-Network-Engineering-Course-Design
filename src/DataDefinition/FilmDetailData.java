@@ -9,7 +9,7 @@ public class FilmDetailData {
     String type;
     String make_location;
     String language;
-    String show_data;
+    String show_date;
     String length;
     String other_name;
     String IMDb_link;
@@ -88,12 +88,12 @@ public class FilmDetailData {
         this.language = language;
     }
 
-    public String getShow_data() {
-        return show_data;
+    public String getShow_date() {
+        return show_date;
     }
 
-    public void setShow_data(String show_data) {
-        this.show_data = show_data;
+    public void setShow_date(String show_date) {
+        this.show_date = show_date;
     }
 
     public String getLength() {

@@ -1,13 +1,11 @@
 package FileOperation;
 
 import DataDefinition.FilmDetailData;
-import DataDefinition.FilmListData;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.LinkedList;
 
 public class WriteDetailInfoToFile {
     //获取当前的目录
@@ -34,31 +32,40 @@ public class WriteDetailInfoToFile {
     //写入信息
     public void WriteDetailContent(FilmDetailData fdd, String path,String file_name) {
         try {
-            BufferedWriter bw=new BufferedWriter(new FileWriter(path+"/"+file_name));
+            BufferedWriter bw=new BufferedWriter(new FileWriter(path+"/"+file_name+".txt"));
             DownloadFile df=new DownloadFile();
+            System.out.println("写入文件 : "+file_name+".txt");
 
             bw.write("标题 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("发布时间 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("导演 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("编剧 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("主演 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("类型 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("制片国家/地区 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("语言 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("上映日期 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("片长 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("又名 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("IMDb链接 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("豆瓣评分 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("评价次数 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("5星评价所占比例 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("4星评价所占比例 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("3星评价所占比例 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("2星评价所占比例 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("1星评价所占比例 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("剧情简介 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("图片链接 : "+fdd.getTitle()+System.getProperty("line.separator"));
-            bw.write("网址 : "+fdd.getTitle()+System.getProperty("line.separator"));
+            bw.write("发布时间 : "+fdd.getPublish_date()+System.getProperty("line.separator"));
+            bw.write("导演 : "+fdd.getDirector()+System.getProperty("line.separator"));
+            bw.write("编剧 : "+fdd.getAuthor()+System.getProperty("line.separator"));
+            bw.write("主演 : "+fdd.getActor()+System.getProperty("line.separator"));
+            bw.write("类型 : "+fdd.getType()+System.getProperty("line.separator"));
+            bw.write("制片国家/地区 : "+fdd.getMake_location()+System.getProperty("line.separator"));
+            bw.write("语言 : "+fdd.getLanguage()+System.getProperty("line.separator"));
+            bw.write("上映日期 : "+fdd.getShow_date()+System.getProperty("line.separator"));
+            bw.write("片长 : "+fdd.getLength()+System.getProperty("line.separator"));
+            bw.write("又名 : "+fdd.getOther_name()+System.getProperty("line.separator"));
+            bw.write("IMDb链接 : "+fdd.getIMDb_link()+System.getProperty("line.separator"));
+            bw.write("豆瓣评分 : "+fdd.getRatingValue()+System.getProperty("line.separator"));
+            bw.write("评价次数 : "+fdd.getComment_num()+System.getProperty("line.separator"));
+            bw.write("5星评价所占比例 : "+fdd.getStar5_rating_per()+System.getProperty("line.separator"));
+            bw.write("4星评价所占比例 : "+fdd.getStar4_rating_per()+System.getProperty("line.separator"));
+            bw.write("3星评价所占比例 : "+fdd.getStar3_rating_per()+System.getProperty("line.separator"));
+            bw.write("2星评价所占比例 : "+fdd.getStar2_rating_per()+System.getProperty("line.separator"));
+            bw.write("1星评价所占比例 : "+fdd.getStar1_rating_per()+System.getProperty("line.separator"));
+            bw.write("剧情简介 : "+fdd.getDescription()+System.getProperty("line.separator"));
+            bw.write("图片链接 : "+fdd.getImg_url()+System.getProperty("line.separator"));
+            bw.write("网址 : "+fdd.getDetail_link()+System.getProperty("line.separator"));
+
+            //下载海报图片
+            System.out.println("下载海报图片 : "+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
+            +" 到 "+path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf("."))
+                    +System.getProperty("line.separator"));
+            df.downloadFile(fdd.getImg_url(),path+"/"+file_name+fdd.getImg_url().substring(fdd.getImg_url().lastIndexOf(".")));
+
+            bw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

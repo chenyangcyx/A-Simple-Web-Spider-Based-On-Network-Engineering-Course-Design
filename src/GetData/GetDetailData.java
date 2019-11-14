@@ -3,19 +3,22 @@ package GetData;
 import Analysis.GetAllInfoFromDetailPage;
 import Connection.GetHttpContent;
 import DataDefinition.FilmDetailData;
-import DataDefinition.FilmListData;
-import java.util.LinkedList;
 
 public class GetDetailData {
-    String url_content;
+    String url;
 
     public GetDetailData(String url){
-        this.url_content=url;
+        this.url =url;
     }
 
-    public FilmDetailData GetDataAndWrite(){
+    public FilmDetailData GetData(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         //获取详情页的内容
-        String content=new GetHttpContent(url_content).GetContent();
+        String content=new GetHttpContent(url).GetContent();
         //从详情页中获取数据，并添加到LinkedList中
         return new GetAllInfoFromDetailPage(content).GetInfo();
     }
